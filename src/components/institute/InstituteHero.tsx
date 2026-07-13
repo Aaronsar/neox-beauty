@@ -16,13 +16,13 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
   }, []);
 
   return (
-    <section className="relative flex h-dvh items-end overflow-hidden">
+    <section className="relative flex h-dvh items-end overflow-hidden bg-cream">
       <div className="absolute inset-0">
         <Image
           src={institute.heroImage}
           alt={institute.name}
           fill
-          className={`object-cover transition-transform duration-[2s] ease-out ${loaded ? "scale-100" : "scale-110"}`}
+          className={`object-cover brightness-110 transition-transform duration-[2s] ease-out ${loaded ? "scale-100" : "scale-110"}`}
           priority
           sizes="100vw"
         />
@@ -31,11 +31,11 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
       <div
         className="absolute inset-0"
         style={{
-          background: `linear-gradient(to top, #080808 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.2) 100%)`,
+          background:
+            "linear-gradient(to top, #faf7f4 0%, rgba(255,255,255,0.5) 45%, rgba(255,255,255,0.15) 100%)",
         }}
       />
 
-      {/* Accent line */}
       <div
         className="absolute top-0 left-0 h-full w-1"
         style={{ backgroundColor: institute.accent }}
@@ -47,26 +47,26 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
         >
           <p
             className="mb-4 text-xs font-semibold tracking-[0.35em] uppercase"
-            style={{ color: institute.accentGlow }}
+            style={{ color: institute.accent }}
           >
             Institut de beauté
           </p>
 
-          <h1 className="font-display text-5xl leading-[0.9] font-bold tracking-tight text-cream md:text-8xl lg:text-9xl">
+          <h1 className="font-display text-5xl leading-[0.9] font-bold tracking-tight text-charcoal md:text-8xl lg:text-9xl">
             {institute.shortName}
           </h1>
 
-          <p className="mt-4 max-w-lg text-base text-cream/60 md:text-lg">
+          <p className="mt-4 max-w-lg text-base text-muted md:text-lg">
             {institute.tagline}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="#rendez-vous"
-              className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide text-white transition-all hover:scale-105 hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide text-white transition-all hover:scale-105"
               style={{
                 backgroundColor: institute.accent,
-                boxShadow: `0 8px 32px ${institute.accent}44`,
+                boxShadow: `0 8px 24px ${institute.accent}33`,
               }}
             >
               Prendre rendez-vous
@@ -82,7 +82,7 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
             </a>
             <a
               href="#equipe"
-              className="inline-flex items-center rounded-full border border-cream/20 px-8 py-3.5 text-sm font-medium tracking-wide text-cream/70 transition-all hover:border-cream/40 hover:text-cream"
+              className="inline-flex items-center rounded-full border border-border bg-white/70 px-8 py-3.5 text-sm font-medium tracking-wide text-charcoal transition-all hover:border-charcoal/20 hover:bg-white"
             >
               Notre équipe
             </a>
@@ -90,13 +90,15 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] tracking-[0.3em] text-cream/30 uppercase">
+          <span className="text-[10px] tracking-[0.3em] text-muted uppercase">
             Scroll
           </span>
-          <div className="h-8 w-px animate-pulse bg-cream/20" />
+          <div
+            className="h-8 w-px animate-pulse"
+            style={{ backgroundColor: institute.accent, opacity: 0.4 }}
+          />
         </div>
       </div>
     </section>

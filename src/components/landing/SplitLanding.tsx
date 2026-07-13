@@ -16,19 +16,19 @@ export default function SplitLanding() {
   const [hovered, setHovered] = useState<Side>(null);
 
   return (
-    <div className="grain relative flex h-dvh w-full flex-col overflow-hidden bg-dark md:flex-row">
+    <div className="grain relative flex h-dvh w-full flex-col overflow-hidden bg-white md:flex-row">
       {/* Logo central */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-        <div className="animate-float flex flex-col items-center gap-3">
+        <div className="animate-float flex flex-col items-center gap-3 rounded-3xl bg-white/90 px-6 py-5 shadow-xl shadow-black/5 backdrop-blur-md">
           <Image
             src="/logo.png"
             alt="Neox Beauty"
             width={90}
             height={36}
-            className="h-auto w-20 drop-shadow-2xl md:w-24"
+            className="h-auto w-20 md:w-24"
             priority
           />
-          <p className="hidden text-[10px] font-medium tracking-[0.35em] text-cream/50 uppercase md:block">
+          <p className="hidden text-[10px] font-medium tracking-[0.35em] text-muted uppercase md:block">
             Choisissez votre univers
           </p>
         </div>
@@ -38,7 +38,7 @@ export default function SplitLanding() {
       <div
         className="absolute top-0 left-1/2 z-20 hidden h-full w-px -translate-x-1/2 md:block"
         style={{
-          background: `linear-gradient(to bottom, transparent, ${hovered === "levallois" ? institutes.levallois.accentGlow : hovered === "saint-brice" ? institutes["saint-brice"].accentGlow : "rgba(255,255,255,0.15)"}, transparent)`,
+          background: `linear-gradient(to bottom, transparent, ${hovered === "levallois" ? institutes.levallois.accent : hovered === "saint-brice" ? institutes["saint-brice"].accent : "#ebe4de"}, transparent)`,
           transition: "background 0.6s ease",
         }}
       />
@@ -57,41 +57,40 @@ export default function SplitLanding() {
             onMouseEnter={() => setHovered(id)}
             onMouseLeave={() => setHovered(null)}
           >
-            {/* Image de fond */}
             <div className="absolute inset-0">
               <Image
                 src={institute.landingImage}
                 alt={institute.city}
                 fill
-                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                className="object-cover brightness-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                 sizes="50vw"
                 priority
               />
             </div>
 
-            {/* Overlay gradient */}
+            {/* Overlay clair */}
             <div
               className="absolute inset-0 transition-all duration-700"
               style={{
                 background: isHovered
-                  ? `linear-gradient(135deg, ${institute.accent}88 0%, rgba(8,8,8,0.6) 60%, rgba(8,8,8,0.85) 100%)`
-                  : "linear-gradient(180deg, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.75) 100%)",
+                  ? `linear-gradient(135deg, ${institute.accent}33 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.75) 100%)`
+                  : "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.65) 60%, rgba(255,255,255,0.85) 100%)",
               }}
             />
 
-            {/* Accent glow on hover */}
             <div
               className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
               style={{
-                boxShadow: `inset 0 0 120px ${institute.accentGlow}44`,
+                boxShadow: `inset 0 0 80px ${institute.accentGlow}33`,
               }}
             />
 
-            {/* Contenu */}
             <div className="relative z-10 flex h-full w-full flex-col justify-end p-6 md:p-12 lg:p-16">
-              {/* Numéro décoratif */}
               <span
-                className="absolute top-6 right-6 font-display text-[8rem] leading-none font-bold text-cream/[0.04] transition-all duration-700 group-hover:text-cream/[0.08] md:top-12 md:right-12 md:text-[12rem]"
+                className="absolute top-6 right-6 font-display text-[8rem] leading-none font-bold transition-all duration-700 md:top-12 md:right-12 md:text-[12rem]"
+                style={{
+                  color: isHovered ? `${institute.accent}18` : "rgba(44,44,44,0.04)",
+                }}
                 aria-hidden
               >
                 {id === "levallois" ? "01" : "02"}
@@ -100,26 +99,24 @@ export default function SplitLanding() {
               <div className="transform transition-all duration-700 group-hover:translate-y-0 md:translate-y-4">
                 <p
                   className="mb-2 text-xs font-semibold tracking-[0.3em] uppercase transition-colors duration-500 md:text-sm"
-                  style={{ color: isHovered ? institute.accentGlow : "rgba(245,240,235,0.5)" }}
+                  style={{ color: isHovered ? institute.accent : "#7a7570" }}
                 >
                   Institut
                 </p>
 
-                <h2 className="font-display text-4xl leading-[0.95] font-bold tracking-tight text-cream md:text-6xl lg:text-7xl">
+                <h2 className="font-display text-4xl leading-[0.95] font-bold tracking-tight text-charcoal md:text-6xl lg:text-7xl">
                   {institute.shortName}
                 </h2>
 
                 <p
                   className="mt-3 max-w-xs text-sm leading-relaxed transition-all duration-500 md:text-base"
                   style={{
-                    color: isHovered ? "rgba(245,240,235,0.85)" : "rgba(245,240,235,0.4)",
-                    opacity: isHovered ? 1 : 0.7,
+                    color: isHovered ? "#2c2c2c" : "#7a7570",
                   }}
                 >
                   {institute.tagline}
                 </p>
 
-                {/* CTA animé */}
                 <div
                   className="mt-6 flex items-center gap-3 transition-all duration-500 md:mt-8"
                   style={{
@@ -128,8 +125,11 @@ export default function SplitLanding() {
                   }}
                 >
                   <span
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide text-white transition-transform duration-300 group-hover:scale-105"
-                    style={{ backgroundColor: institute.accent }}
+                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide text-white shadow-lg transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                      backgroundColor: institute.accent,
+                      boxShadow: `0 8px 24px ${institute.accent}44`,
+                    }}
                   >
                     Entrer
                     <svg
@@ -152,7 +152,6 @@ export default function SplitLanding() {
               </div>
             </div>
 
-            {/* Barre accent bas */}
             <div
               className="absolute right-0 bottom-0 left-0 h-1 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
               style={{ backgroundColor: institute.accent }}
@@ -161,8 +160,7 @@ export default function SplitLanding() {
         );
       })}
 
-      {/* Label mobile */}
-      <p className="absolute bottom-4 left-1/2 z-30 -translate-x-1/2 text-[10px] tracking-[0.25em] text-cream/30 uppercase md:hidden">
+      <p className="absolute bottom-4 left-1/2 z-30 -translate-x-1/2 text-[10px] tracking-[0.25em] text-muted uppercase md:hidden">
         Touchez pour choisir
       </p>
     </div>

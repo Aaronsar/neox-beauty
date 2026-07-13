@@ -8,16 +8,16 @@ interface InstituteGalleryProps {
 
 export default function InstituteGallery({ institute }: InstituteGalleryProps) {
   return (
-    <section id="galerie" className="bg-dark py-24 md:py-32">
+    <section id="galerie" className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="mb-12">
           <p
             className="mb-3 text-xs font-semibold tracking-[0.35em] uppercase"
-            style={{ color: institute.accentGlow }}
+            style={{ color: institute.accent }}
           >
             Inspirations
           </p>
-          <h2 className="font-display text-4xl font-bold tracking-tight text-cream md:text-6xl">
+          <h2 className="font-display text-4xl font-bold tracking-tight text-charcoal md:text-6xl">
             Galerie
           </h2>
         </div>
@@ -39,12 +39,12 @@ export default function InstituteGallery({ institute }: InstituteGalleryProps) {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-dark/0 transition-colors duration-500 group-hover:bg-dark/20" />
+              <div className="absolute inset-0 bg-white/0 transition-colors duration-500 group-hover:bg-white/10" />
             </div>
           ))}
         </div>
 
-        <p className="mt-6 text-center text-xs text-cream/25">
+        <p className="mt-6 text-center text-xs text-muted">
           Photos illustratives — vos réalisations seront ajoutées prochainement
         </p>
       </div>

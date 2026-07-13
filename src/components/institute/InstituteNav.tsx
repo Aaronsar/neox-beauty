@@ -30,9 +30,10 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
     <header
       className="fixed top-0 right-0 left-0 z-50 transition-all duration-500"
       style={{
-        backgroundColor: scrolled ? "rgba(8,8,8,0.85)" : "transparent",
+        backgroundColor: scrolled ? "rgba(255,255,255,0.9)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none",
+        borderBottom: scrolled ? "1px solid #ebe4de" : "none",
+        boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.04)" : "none",
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -44,7 +45,10 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
             height={32}
             className="h-8 w-auto transition-opacity group-hover:opacity-70"
           />
-          <span className="hidden text-xs tracking-[0.2em] text-cream/40 uppercase transition-colors group-hover:text-cream/70 sm:inline">
+          <span
+            className="hidden text-xs tracking-[0.2em] uppercase transition-colors sm:inline"
+            style={{ color: scrolled ? institute.accent : "#7a7570" }}
+          >
             {institute.shortName}
           </span>
         </Link>
@@ -54,7 +58,7 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-medium tracking-widest text-cream/50 uppercase transition-colors hover:text-cream"
+              className="text-xs font-medium tracking-widest text-muted uppercase transition-colors hover:text-charcoal"
             >
               {link.label}
             </a>

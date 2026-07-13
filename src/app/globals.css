@@ -10,10 +10,13 @@
   --color-levallois-glow: #ff4d8a;
   --color-saint-brice: #c9956c;
   --color-saint-brice-glow: #e8b88a;
-  --color-dark: #080808;
-  --color-dark-soft: #141414;
-  --color-cream: #f5f0eb;
-  --color-muted: #8a8580;
+  --color-white: #ffffff;
+  --color-cream: #faf7f4;
+  --color-blush: #fdf2f5;
+  --color-soft: #f3ece6;
+  --color-charcoal: #2c2c2c;
+  --color-muted: #7a7570;
+  --color-border: #ebe4de;
 }
 
 html {
@@ -22,8 +25,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-cream);
-  background-color: var(--color-dark);
+  color: var(--color-charcoal);
+  background-color: var(--color-white);
   overflow-x: hidden;
 }
 
@@ -44,24 +47,6 @@ h4 {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-@keyframes line-grow {
-  from {
-    transform: scaleY(0);
-  }
-  to {
-    transform: scaleY(1);
-  }
-}
-
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -70,7 +55,7 @@ h4 {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.04;
+  opacity: 0.025;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
