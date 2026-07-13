@@ -51,6 +51,107 @@ h4 {
   animation: float 4s ease-in-out infinite;
 }
 
+/* Logo animations */
+.logo-animated .logo-bg {
+  animation: logoBgIn 0.6s ease-out both;
+}
+
+.logo-animated .logo-frame {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: logoDraw 1.4s ease-out 0.2s both;
+}
+
+.logo-animated .logo-label-top {
+  opacity: 0;
+  animation: logoFadeDown 0.6s ease-out 0.5s both;
+}
+
+.logo-animated .logo-brand {
+  opacity: 0;
+  transform-origin: center;
+  animation: logoBrandIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.logo-animated .logo-label-bottom {
+  opacity: 0;
+  animation: logoFadeUp 0.6s ease-out 1s both;
+}
+
+.logo-animated .logo-location-1 {
+  opacity: 0;
+  animation: logoFadeUp 0.5s ease-out 1.2s both;
+}
+
+.logo-animated .logo-location-2 {
+  opacity: 0;
+  animation: logoFadeUp 0.5s ease-out 1.35s both;
+}
+
+.logo-hover:hover {
+  animation: logoPulse 0.6s ease-in-out;
+}
+
+@keyframes logoBgIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes logoBrandIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
 .grain::after {
   content: "";
   position: absolute;

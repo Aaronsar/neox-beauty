@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import NeoxLogo from "@/components/brand/NeoxLogo";
 import BookingButton from "@/components/institute/BookingButton";
 import type { Institute } from "@/data/site";
 
@@ -37,14 +37,8 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="group flex items-center gap-3">
-          <Image
-            src="/logo.png"
-            alt="Neox Beauty"
-            width={80}
-            height={32}
-            className="h-8 w-auto transition-opacity group-hover:opacity-70"
-          />
+        <Link href="/" className="logo-hover group flex items-center gap-3 transition-transform">
+          <NeoxLogo size={42} showLocations={false} />
           <span
             className="hidden text-xs tracking-[0.2em] uppercase transition-colors sm:inline"
             style={{ color: scrolled ? institute.accent : "#7a7570" }}

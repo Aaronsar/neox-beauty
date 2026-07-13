@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import NeoxLogo from "@/components/brand/NeoxLogo";
 import { institutes } from "@/data/site";
 
 type Side = "levallois" | "saint-brice" | null;
@@ -19,16 +20,13 @@ export default function SplitLanding() {
     <div className="grain relative flex h-dvh w-full flex-col overflow-hidden bg-white md:flex-row">
       {/* Logo central */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-        <div className="animate-float flex flex-col items-center gap-3 rounded-3xl bg-white/90 px-6 py-5 shadow-xl shadow-black/5 backdrop-blur-md">
-          <Image
-            src="/logo.png"
-            alt="Neox Beauty"
-            width={90}
-            height={36}
-            className="h-auto w-20 md:w-24"
-            priority
-          />
-          <p className="hidden text-[10px] font-medium tracking-[0.35em] uppercase md:block" style={{ color: "#d4145a" }}>
+        <div className="animate-float flex flex-col items-center gap-4">
+          <NeoxLogo size={110} animated showLocations className="drop-shadow-2xl md:hidden" />
+          <NeoxLogo size={130} animated showLocations className="hidden drop-shadow-2xl md:block" />
+          <p
+            className="hidden text-[10px] font-medium tracking-[0.35em] uppercase md:block"
+            style={{ color: "#d4145a" }}
+          >
             Choisissez votre univers
           </p>
         </div>
