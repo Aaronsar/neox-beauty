@@ -21,13 +21,17 @@ export default function SplitLanding() {
     <div className="grain relative flex min-h-dvh flex-col overflow-hidden bg-cream md:flex-row">
       <DecorativeShapes />
 
-      {/* Logo flottant */}
+      {/* Logo officiel — centre */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
-        <div className="animate-float flex flex-col items-center gap-3">
-          <div className="rounded-[2rem] bg-white/80 p-3 shadow-2xl shadow-neox/10 backdrop-blur-md">
-            <NeoxLogo size={100} animated showLocations className="md:hidden" />
-            <NeoxLogo size={120} animated showLocations className="hidden md:block" />
-          </div>
+        <div className="flex flex-col items-center gap-4">
+          <NeoxLogo
+            size={120}
+            animated
+            className="w-28 drop-shadow-2xl md:w-36"
+          />
+          <p className="whitespace-nowrap text-[10px] font-semibold tracking-[0.35em] text-neox uppercase">
+            Choisissez votre univers
+          </p>
         </div>
       </div>
 

@@ -41,7 +41,7 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
         }}
       >
         <Link href="/" className="logo-hover shrink-0 transition-transform">
-          <NeoxLogo size={36} showLocations={false} />
+          <NeoxLogo size={36} />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

@@ -21,7 +21,7 @@ export default function InstituteFooter({ institute }: InstituteFooterProps) {
 
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6 md:flex-row md:justify-between md:px-12">
         <Link href="/" className="logo-hover transition-transform">
-          <NeoxLogo size={44} showLocations={false} />
+          <NeoxLogo size={44} />
         </Link>
 
         <p className="text-center text-xs text-muted">
