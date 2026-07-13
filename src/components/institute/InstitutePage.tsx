@@ -4,12 +4,12 @@ import {
   getEmployees,
   type Location,
 } from "@/data/site";
+import { BookingProvider } from "@/components/institute/BookingProvider";
 import InstituteNav from "@/components/institute/InstituteNav";
 import InstituteHero from "@/components/institute/InstituteHero";
 import InstituteTeam from "@/components/institute/InstituteTeam";
 import InstituteServices from "@/components/institute/InstituteServices";
 import InstituteGallery from "@/components/institute/InstituteGallery";
-import InstituteBooking from "@/components/institute/InstituteBooking";
 import InstituteContact from "@/components/institute/InstituteContact";
 import InstituteFooter from "@/components/institute/InstituteFooter";
 
@@ -27,20 +27,19 @@ export default function InstitutePage({ location }: InstitutePageProps) {
   const team = getEmployees(location);
 
   return (
-    <>
+    <BookingProvider institute={institute}>
       <InstituteNav institute={institute} />
       <main>
         <InstituteHero institute={institute} />
         <InstituteTeam institute={institute} members={team} />
         <InstituteServices institute={institute} />
         <InstituteGallery institute={institute} />
-        <InstituteBooking institute={institute} />
         <InstituteContact
           institute={institute}
           otherInstitute={otherInstitute}
         />
       </main>
       <InstituteFooter institute={institute} />
-    </>
+    </BookingProvider>
   );
 }

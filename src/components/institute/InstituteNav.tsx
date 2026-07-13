@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import BookingButton from "@/components/institute/BookingButton";
 import type { Institute } from "@/data/site";
 
 interface InstituteNavProps {
@@ -22,7 +23,6 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
     { href: "#equipe", label: "Équipe" },
     { href: "#services", label: "Services" },
     { href: "#galerie", label: "Galerie" },
-    { href: "#rendez-vous", label: "Réserver" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -65,13 +65,7 @@ export default function InstituteNav({ institute }: InstituteNavProps) {
           ))}
         </nav>
 
-        <a
-          href="#rendez-vous"
-          className="rounded-full px-5 py-2 text-xs font-semibold tracking-wider text-white uppercase transition-transform hover:scale-105"
-          style={{ backgroundColor: institute.accent }}
-        >
-          Réserver
-        </a>
+        <BookingButton institute={institute}>Réserver</BookingButton>
       </div>
     </header>
   );

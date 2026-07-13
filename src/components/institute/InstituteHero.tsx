@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import BookingButton from "@/components/institute/BookingButton";
 import type { Institute } from "@/data/site";
 
 interface InstituteHeroProps {
@@ -52,23 +53,22 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
             Institut de beauté
           </p>
 
-          <h1 className="font-display text-5xl leading-[0.9] font-bold tracking-tight text-charcoal md:text-8xl lg:text-9xl">
+          <h1
+            className="font-display text-5xl leading-[0.9] font-bold tracking-tight md:text-8xl lg:text-9xl"
+            style={{ color: institute.accent }}
+          >
             {institute.shortName}
           </h1>
 
-          <p className="mt-4 max-w-lg text-base text-muted md:text-lg">
+          <p
+            className="mt-4 max-w-lg text-base md:text-lg"
+            style={{ color: `${institute.accent}99` }}
+          >
             {institute.tagline}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#rendez-vous"
-              className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide text-white transition-all hover:scale-105"
-              style={{
-                backgroundColor: institute.accent,
-                boxShadow: `0 8px 24px ${institute.accent}33`,
-              }}
-            >
+            <BookingButton institute={institute}>
               Prendre rendez-vous
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
@@ -79,7 +79,7 @@ export default function InstituteHero({ institute }: InstituteHeroProps) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </BookingButton>
             <a
               href="#equipe"
               className="inline-flex items-center rounded-full border border-border bg-white/70 px-8 py-3.5 text-sm font-medium tracking-wide text-charcoal transition-all hover:border-charcoal/20 hover:bg-white"

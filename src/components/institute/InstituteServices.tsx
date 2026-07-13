@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import BookingButton from "@/components/institute/BookingButton";
 import { services } from "@/data/site";
 import type { Institute } from "@/data/site";
 
@@ -63,11 +64,7 @@ export default function InstituteServices({ institute }: InstituteServicesProps)
         </div>
 
         <div className="mt-10 text-center">
-          <a
-            href="#rendez-vous"
-            className="inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase transition-colors"
-            style={{ color: institute.accent }}
-          >
+          <BookingButton institute={institute} variant="text">
             Voir tout & réserver
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
               <path
@@ -78,7 +75,7 @@ export default function InstituteServices({ institute }: InstituteServicesProps)
                 strokeLinejoin="round"
               />
             </svg>
-          </a>
+          </BookingButton>
         </div>
       </div>
     </section>

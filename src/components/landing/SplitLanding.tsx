@@ -28,7 +28,7 @@ export default function SplitLanding() {
             className="h-auto w-20 md:w-24"
             priority
           />
-          <p className="hidden text-[10px] font-medium tracking-[0.35em] text-muted uppercase md:block">
+          <p className="hidden text-[10px] font-medium tracking-[0.35em] uppercase md:block" style={{ color: "#d4145a" }}>
             Choisissez votre univers
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function SplitLanding() {
               <span
                 className="absolute top-6 right-6 font-display text-[8rem] leading-none font-bold transition-all duration-700 md:top-12 md:right-12 md:text-[12rem]"
                 style={{
-                  color: isHovered ? `${institute.accent}18` : "rgba(44,44,44,0.04)",
+                  color: isHovered ? `${institute.accent}25` : `${institute.accent}10`,
                 }}
                 aria-hidden
               >
@@ -99,19 +99,24 @@ export default function SplitLanding() {
               <div className="transform transition-all duration-700 group-hover:translate-y-0 md:translate-y-4">
                 <p
                   className="mb-2 text-xs font-semibold tracking-[0.3em] uppercase transition-colors duration-500 md:text-sm"
-                  style={{ color: isHovered ? institute.accent : "#7a7570" }}
+                  style={{
+                    color: isHovered ? institute.accent : `${institute.accent}99`,
+                  }}
                 >
                   Institut
                 </p>
 
-                <h2 className="font-display text-4xl leading-[0.95] font-bold tracking-tight text-charcoal md:text-6xl lg:text-7xl">
+                <h2
+                  className="font-display text-4xl leading-[0.95] font-bold tracking-tight transition-colors duration-500 md:text-6xl lg:text-7xl"
+                  style={{ color: institute.accent }}
+                >
                   {institute.shortName}
                 </h2>
 
                 <p
                   className="mt-3 max-w-xs text-sm leading-relaxed transition-all duration-500 md:text-base"
                   style={{
-                    color: isHovered ? "#2c2c2c" : "#7a7570",
+                    color: isHovered ? `${institute.accent}cc` : `${institute.accent}88`,
                   }}
                 >
                   {institute.tagline}

@@ -64,8 +64,8 @@ export const institutes: Record<Location, Institute> = {
       "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920&h=1080&fit=crop",
     landingImage:
       "https://images.unsplash.com/photo-1519415510236-718bdcd38c08?w=1200&h=1600&fit=crop",
-    accent: "#c9956c",
-    accentGlow: "#e8b88a",
+    accent: "#d4145a",
+    accentGlow: "#ff4d8a",
   },
 };
 
