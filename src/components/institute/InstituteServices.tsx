@@ -7,13 +7,6 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { services } from "@/data/site";
 import type { Institute } from "@/data/site";
 
-const bentoLayout = [
-  "md:col-span-2 md:row-span-2",
-  "md:col-span-1",
-  "md:col-span-1",
-  "md:col-span-2",
-];
-
 interface InstituteServicesProps {
   institute: Institute;
 }
@@ -41,36 +34,29 @@ export default function InstituteServices({ institute }: InstituteServicesProps)
           </div>
         </Reveal>
 
-        {/* Bento grid */}
-        <div className="mt-14 grid auto-rows-[200px] gap-4 md:grid-cols-3 md:auto-rows-[220px] md:gap-5">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {services.map((service, i) => (
-            <Reveal key={service.title} delay={i * 100} className={bentoLayout[i] ?? ""}>
-              <article className="card-lift group relative h-full overflow-hidden rounded-[2rem] bg-white shadow-sm">
+            <Reveal key={service.title} delay={i * 80}>
+              <article className="card-lift group relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-white shadow-sm">
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, 25vw"
                 />
                 <div
-                  className="absolute inset-0 transition-opacity duration-500"
+                  className="absolute inset-0"
                   style={{
-                    background: `linear-gradient(to top, ${institute.accent}ee 0%, ${institute.accent}44 40%, transparent 100%)`,
-                    opacity: 0.85,
+                    background: `linear-gradient(to top, ${institute.accent}ee 0%, ${institute.accent}44 45%, transparent 100%)`,
                   }}
                 />
-                <div className="absolute right-0 bottom-0 left-0 p-6">
-                  <h3 className="font-display text-xl font-bold text-white md:text-2xl">
+                <div className="absolute right-0 bottom-0 left-0 p-5">
+                  <h3 className="font-display text-lg font-bold text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-1 text-sm text-white/80">{service.description}</p>
+                  <p className="mt-1 text-xs text-white/80">{service.description}</p>
                 </div>
-                {/* Coin arrondi décoratif */}
-                <div
-                  className="absolute top-4 right-4 h-10 w-10 rounded-2xl border-2 border-white/40 transition-transform duration-500 group-hover:rotate-12"
-                  style={{ backgroundColor: `${institute.accent}55` }}
-                />
               </article>
             </Reveal>
           ))}
