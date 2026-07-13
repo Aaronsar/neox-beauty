@@ -1,33 +1,25 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-montserrat",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Neox Beauty — Institut de beauté à Levallois & Saint-Brice",
+  title: "Neox Beauty — Choisissez votre institut",
   description:
-    "Neox Beauty, votre institut de beauté à Levallois-Perret et Saint-Brice-sous-Forêt. Manucure, semi-permanent, soins du visage, épilation. Prenez rendez-vous en ligne.",
-  keywords: [
-    "institut beauté",
-    "manucure",
-    "semi-permanent",
-    "Levallois-Perret",
-    "Saint-Brice-sous-Forêt",
-    "Neox Beauty",
-  ],
+    "Neox Beauty — Deux instituts, une même passion. Levallois-Perret & Saint-Brice-sous-Forêt.",
 };
 
 export default function RootLayout({
@@ -36,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="fr" className={`${syne.variable} ${dmSans.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );
