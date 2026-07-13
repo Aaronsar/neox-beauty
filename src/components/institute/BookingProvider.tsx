@@ -56,73 +56,65 @@ export function BookingProvider({ institute, children }: BookingProviderProps) {
 
       {open && (
         <div
-          className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center"
+          className="fixed inset-0 z-[200] flex items-end justify-center p-4 sm:items-center"
           role="dialog"
           aria-modal="true"
           aria-labelledby="booking-title"
         >
           <button
             type="button"
-            className="absolute inset-0 bg-charcoal/40 backdrop-blur-sm transition-opacity"
+            className="backdrop-enter absolute inset-0 bg-charcoal/50 backdrop-blur-md"
             onClick={close}
             aria-label="Fermer"
           />
 
-          <div className="relative z-10 flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:max-h-[85dvh] sm:max-w-2xl sm:rounded-3xl">
-            {/* Header */}
+          <div className="modal-enter relative z-10 flex max-h-[90dvh] w-full max-w-lg flex-col overflow-hidden rounded-[2.5rem] bg-white shadow-2xl">
             <div
-              className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4"
-              style={{ borderBottomColor: `${institute.accent}22` }}
+              className="relative shrink-0 px-8 pt-8 pb-6"
+              style={{ backgroundColor: `${institute.accent}08` }}
             >
-              <div>
-                <p
-                  className="text-[10px] font-semibold tracking-[0.3em] uppercase"
-                  style={{ color: institute.accent }}
-                >
-                  Réservation
-                </p>
-                <h2
-                  id="booking-title"
-                  className="font-display text-xl font-bold text-charcoal"
-                >
-                  {institute.shortName}
-                </h2>
-              </div>
               <button
                 type="button"
                 onClick={close}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-cream text-charcoal transition-colors hover:bg-soft"
-                aria-label="Fermer la fenêtre"
+                className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-charcoal shadow-sm transition-transform hover:scale-105"
+                aria-label="Fermer"
               >
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path
-                    d="M4 4l10 10M14 4L4 14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
+                  <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </button>
+
+              <span
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-semibold tracking-[0.3em] uppercase"
+                style={{ backgroundColor: `${institute.accent}15`, color: institute.accent }}
+              >
+                Réservation
+              </span>
+              <h2
+                id="booking-title"
+                className="mt-3 font-display text-2xl font-bold text-charcoal"
+              >
+                {institute.shortName}
+              </h2>
+              <p className="mt-1 text-sm text-muted">Réservez via Planity</p>
             </div>
 
-            {/* Contenu Planity */}
             <div className="flex-1 overflow-y-auto p-6">
               <div
-                className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-dashed p-8 text-center"
+                className="flex min-h-[360px] flex-col items-center justify-center rounded-[2rem] border-2 border-dashed p-8 text-center"
                 style={{ borderColor: `${institute.accent}33` }}
               >
                 <div
-                  className="mb-4 flex h-16 w-16 items-center justify-center rounded-full text-2xl"
+                  className="mb-4 flex h-20 w-20 items-center justify-center rounded-[1.5rem] text-3xl"
                   style={{ backgroundColor: `${institute.accent}12` }}
                 >
                   📅
                 </div>
                 <h3 className="font-display text-lg font-bold text-charcoal">
-                  Widget Planity — {institute.shortName}
+                  Widget Planity
                 </h3>
-                <p className="mt-2 max-w-sm text-sm text-muted">
-                  Le code Planity de cet institut sera intégré ici. Vous pourrez
-                  choisir votre prestation et réserver directement.
+                <p className="mt-2 max-w-xs text-sm text-muted">
+                  Le code Planity de cet institut sera intégré ici.
                 </p>
               </div>
             </div>

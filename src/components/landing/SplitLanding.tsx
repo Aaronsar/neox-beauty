@@ -4,168 +4,169 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import NeoxLogo from "@/components/brand/NeoxLogo";
+import DecorativeShapes from "@/components/ui/DecorativeShapes";
 import { institutes } from "@/data/site";
 
 type Side = "levallois" | "saint-brice" | null;
 
 const sides = [
-  { id: "levallois" as const, institute: institutes.levallois },
-  { id: "saint-brice" as const, institute: institutes["saint-brice"] },
+  { id: "levallois" as const, institute: institutes.levallois, num: "01" },
+  { id: "saint-brice" as const, institute: institutes["saint-brice"], num: "02" },
 ];
 
 export default function SplitLanding() {
   const [hovered, setHovered] = useState<Side>(null);
 
   return (
-    <div className="grain relative flex h-dvh w-full flex-col overflow-hidden bg-white md:flex-row">
-      {/* Logo central */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-        <div className="animate-float flex flex-col items-center gap-4">
-          <NeoxLogo size={110} animated showLocations className="drop-shadow-2xl md:hidden" />
-          <NeoxLogo size={130} animated showLocations className="hidden drop-shadow-2xl md:block" />
-          <p
-            className="hidden text-[10px] font-medium tracking-[0.35em] uppercase md:block"
-            style={{ color: "#d4145a" }}
-          >
-            Choisissez votre univers
-          </p>
+    <div className="grain relative flex min-h-dvh flex-col overflow-hidden bg-cream md:flex-row">
+      <DecorativeShapes />
+
+      {/* Logo flottant */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
+        <div className="animate-float flex flex-col items-center gap-3">
+          <div className="rounded-[2rem] bg-white/80 p-3 shadow-2xl shadow-neox/10 backdrop-blur-md">
+            <NeoxLogo size={100} animated showLocations className="md:hidden" />
+            <NeoxLogo size={120} animated showLocations className="hidden md:block" />
+          </div>
         </div>
       </div>
 
-      {/* Ligne centrale */}
-      <div
-        className="absolute top-0 left-1/2 z-20 hidden h-full w-px -translate-x-1/2 md:block"
-        style={{
-          background: `linear-gradient(to bottom, transparent, ${hovered === "levallois" ? institutes.levallois.accent : hovered === "saint-brice" ? institutes["saint-brice"].accent : "#ebe4de"}, transparent)`,
-          transition: "background 0.6s ease",
-        }}
-      />
-
-      {sides.map(({ id, institute }) => {
+      {sides.map(({ id, institute, num }, index) => {
         const isHovered = hovered === id;
-        const isOtherHovered = hovered !== null && hovered !== id;
-        const flexGrow = isHovered ? 1.6 : isOtherHovered ? 0.4 : 1;
+        const isOther = hovered !== null && hovered !== id;
 
         return (
           <Link
             key={id}
             href={`/${institute.slug}`}
-            className="group relative flex flex-1 overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-            style={{ flexGrow }}
+            className="group relative flex flex-1 items-center justify-center p-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:p-8 lg:p-12"
+            style={{
+              flex: isHovered ? 1.35 : isOther ? 0.65 : 1,
+            }}
             onMouseEnter={() => setHovered(id)}
             onMouseLeave={() => setHovered(null)}
           >
-            <div className="absolute inset-0">
-              <Image
-                src={institute.landingImage}
-                alt={institute.city}
-                fill
-                className="object-cover brightness-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
-                sizes="50vw"
-                priority
-              />
-            </div>
-
-            {/* Overlay clair */}
+            {/* Carte portail */}
             <div
-              className="absolute inset-0 transition-all duration-700"
+              className="card-lift relative flex h-[72dvh] w-full max-w-xl flex-col overflow-hidden rounded-[2.5rem] bg-white shadow-xl md:h-[82dvh] md:rounded-[3rem]"
               style={{
-                background: isHovered
-                  ? `linear-gradient(135deg, ${institute.accent}33 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.75) 100%)`
-                  : "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.65) 60%, rgba(255,255,255,0.85) 100%)",
+                boxShadow: isHovered
+                  ? `0 32px 64px -16px ${institute.accent}33`
+                  : "0 16px 40px -12px rgba(0,0,0,0.08)",
+                transform: isHovered ? "translateY(-12px) scale(1.02)" : undefined,
+                transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
-            />
-
-            <div
-              className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-              style={{
-                boxShadow: `inset 0 0 80px ${institute.accentGlow}33`,
-              }}
-            />
-
-            <div className="relative z-10 flex h-full w-full flex-col justify-end p-6 md:p-12 lg:p-16">
-              <span
-                className="absolute top-6 right-6 font-display text-[8rem] leading-none font-bold transition-all duration-700 md:top-12 md:right-12 md:text-[12rem]"
-                style={{
-                  color: isHovered ? `${institute.accent}25` : `${institute.accent}10`,
-                }}
-                aria-hidden
-              >
-                {id === "levallois" ? "01" : "02"}
-              </span>
-
-              <div className="transform transition-all duration-700 group-hover:translate-y-0 md:translate-y-4">
-                <p
-                  className="mb-2 text-xs font-semibold tracking-[0.3em] uppercase transition-colors duration-500 md:text-sm"
+            >
+              {/* Image arrondie en haut */}
+              <div className="relative m-4 flex-1 overflow-hidden rounded-[2rem] md:m-5">
+                <Image
+                  src={institute.landingImage}
+                  alt={institute.city}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="50vw"
+                  priority
+                />
+                <div
+                  className="absolute inset-0 transition-opacity duration-500"
                   style={{
-                    color: isHovered ? institute.accent : `${institute.accent}99`,
+                    background: `linear-gradient(to top, ${institute.accent}55, transparent 60%)`,
+                    opacity: isHovered ? 1 : 0.6,
                   }}
+                />
+
+                {/* Numéro graphique */}
+                <div
+                  className="absolute top-4 left-4 flex h-12 w-12 items-center justify-center rounded-2xl text-sm font-bold text-white backdrop-blur-sm transition-transform duration-500 group-hover:scale-110"
+                  style={{ backgroundColor: `${institute.accent}cc` }}
+                >
+                  {num}
+                </div>
+              </div>
+
+              {/* Contenu */}
+              <div className="relative px-6 pb-6 md:px-8 md:pb-8">
+                <div
+                  className="absolute -top-6 right-6 h-12 w-12 rounded-full border-4 border-white opacity-60"
+                  style={{ backgroundColor: `${institute.accent}22` }}
+                />
+
+                <p
+                  className="mb-1 text-[10px] font-semibold tracking-[0.35em] uppercase"
+                  style={{ color: institute.accent }}
                 >
                   Institut
                 </p>
-
                 <h2
-                  className="font-display text-4xl leading-[0.95] font-bold tracking-tight transition-colors duration-500 md:text-6xl lg:text-7xl"
+                  className="font-display text-3xl font-bold tracking-tight md:text-5xl"
                   style={{ color: institute.accent }}
                 >
                   {institute.shortName}
                 </h2>
-
                 <p
-                  className="mt-3 max-w-xs text-sm leading-relaxed transition-all duration-500 md:text-base"
-                  style={{
-                    color: isHovered ? `${institute.accent}cc` : `${institute.accent}88`,
-                  }}
+                  className="mt-2 text-sm leading-relaxed"
+                  style={{ color: `${institute.accent}99` }}
                 >
                   {institute.tagline}
                 </p>
 
                 <div
-                  className="mt-6 flex items-center gap-3 transition-all duration-500 md:mt-8"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-all duration-500"
                   style={{
-                    opacity: isHovered ? 1 : 0,
-                    transform: isHovered ? "translateY(0)" : "translateY(16px)",
+                    backgroundColor: institute.accent,
+                    opacity: isHovered ? 1 : 0.85,
+                    transform: isHovered ? "translateX(4px)" : "translateX(0)",
                   }}
                 >
-                  <span
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide text-white shadow-lg transition-transform duration-300 group-hover:scale-105"
-                    style={{
-                      backgroundColor: institute.accent,
-                      boxShadow: `0 8px 24px ${institute.accent}44`,
-                    }}
-                  >
-                    Entrer
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      <path
-                        d="M3 8h10M9 4l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
+                  Entrer
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
               </div>
+
+              {/* Bande accent */}
+              <div
+                className="absolute top-0 left-0 h-full w-1.5 rounded-l-[3rem] transition-all duration-500"
+                style={{
+                  backgroundColor: institute.accent,
+                  opacity: isHovered ? 1 : 0.4,
+                }}
+              />
             </div>
 
+            {/* Forme décorative derrière la carte */}
             <div
-              className="absolute right-0 bottom-0 left-0 h-1 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
-              style={{ backgroundColor: institute.accent }}
+              className="absolute -z-10 rounded-[3rem] transition-all duration-700"
+              style={{
+                inset: index === 0 ? "-8px 20px 20px -8px" : "-8px -8px 20px 20px",
+                backgroundColor: `${institute.accent}15`,
+                transform: isHovered ? "rotate(-2deg) scale(1.03)" : "rotate(0deg)",
+              }}
             />
           </Link>
         );
       })}
 
-      <p className="absolute bottom-4 left-1/2 z-30 -translate-x-1/2 text-[10px] tracking-[0.25em] text-muted uppercase md:hidden">
-        Touchez pour choisir
-      </p>
+      {/* Bandeau défilant */}
+      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden border-t border-border bg-white/70 py-3 backdrop-blur-sm">
+        <div className="animate-marquee flex whitespace-nowrap">
+          {[...Array(2)].map((_, i) => (
+            <span
+              key={i}
+              className="mx-8 text-[10px] font-medium tracking-[0.4em] text-muted uppercase"
+            >
+              Neox Beauty · Levallois-Perret · Saint-Brice-sous-Forêt · Institut de beauté ·
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

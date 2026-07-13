@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeader from "@/components/ui/SectionHeader";
 import type { Employee, Institute } from "@/data/site";
 
 interface InstituteTeamProps {
@@ -10,61 +14,75 @@ export default function InstituteTeam({
   institute,
   members,
 }: InstituteTeamProps) {
+  const lead = members.find((m) => m.role === "Responsable");
+  const rest = members.filter((m) => m.role !== "Responsable");
+
   return (
-    <section id="equipe" className="bg-white py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p
-              className="mb-3 text-xs font-semibold tracking-[0.35em] uppercase"
-              style={{ color: institute.accent }}
-            >
-              L&apos;équipe
-            </p>
-            <h2 className="font-display text-4xl font-bold tracking-tight text-charcoal md:text-6xl">
-              Nos expertes
-            </h2>
+    <section id="equipe" className="relative overflow-hidden bg-white py-24 md:py-32">
+      <div
+        className="absolute top-0 right-0 h-64 w-64 rounded-full opacity-10 blur-3xl"
+        style={{ backgroundColor: institute.accent }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6 md:px-12">
+        <Reveal>
+          <SectionHeader
+            label="L'équipe"
+            title="Nos expertes"
+            subtitle={`Des professionnelles passionnées à ${institute.city}.`}
+            accent={institute.accent}
+          />
+        </Reveal>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-2 md:gap-6">
+          {lead && (
+            <Reveal delay={100}>
+              <article className="card-lift group relative overflow-hidden rounded-[2.5rem] bg-blush md:row-span-1">
+                <div className="relative m-4 aspect-[4/5] overflow-hidden rounded-[2rem] md:m-5">
+                  <Image
+                    src={lead.image}
+                    alt={lead.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="40vw"
+                  />
+                </div>
+                <div className="px-6 pb-6 md:px-8 md:pb-8">
+                  <span
+                    className="mb-2 inline-block rounded-full px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase"
+                    style={{ backgroundColor: institute.accent }}
+                  >
+                    {lead.role}
+                  </span>
+                  <h3 className="font-display text-3xl font-bold text-charcoal">{lead.name}</h3>
+                </div>
+              </article>
+            </Reveal>
+          )}
+
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1">
+            {rest.map((member, i) => (
+              <Reveal key={member.id} delay={150 + i * 80}>
+                <article className="card-lift group flex gap-4 overflow-hidden rounded-[2rem] bg-cream p-3">
+                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-[1.25rem] sm:h-28 sm:w-28">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="120px"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <h3 className="font-display text-lg font-bold text-charcoal">{member.name}</h3>
+                    <p className="text-[10px] font-medium tracking-widest text-muted uppercase">
+                      {member.role}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-muted">
-            Des professionnelles passionnées pour vous accompagner à{" "}
-            {institute.city}.
-          </p>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {members.map((member) => (
-            <article
-              key={member.id}
-              className="group overflow-hidden rounded-2xl border border-border bg-cream shadow-sm transition-all duration-500 hover:shadow-md"
-            >
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-              </div>
-
-              <div className="p-5">
-                <h3 className="font-display text-xl font-bold text-charcoal">
-                  {member.name}
-                </h3>
-                <p
-                  className="mt-0.5 text-xs font-medium tracking-wider uppercase"
-                  style={{
-                    color:
-                      member.role === "Responsable"
-                        ? institute.accent
-                        : "#7a7570",
-                  }}
-                >
-                  {member.role}
-                </p>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>

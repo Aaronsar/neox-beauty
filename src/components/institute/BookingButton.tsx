@@ -23,7 +23,7 @@ export default function BookingButton({
       <button
         type="button"
         onClick={openBooking}
-        className={`inline-flex cursor-pointer items-center gap-2 text-sm font-semibold tracking-wider uppercase transition-colors ${className}`}
+        className={`inline-flex cursor-pointer items-center gap-2 text-sm font-semibold tracking-wider uppercase transition-all hover:gap-3 ${className}`}
         style={{ color: institute.accent }}
       >
         {children}
@@ -35,10 +35,10 @@ export default function BookingButton({
     <button
       type="button"
       onClick={openBooking}
-      className={`inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2 text-xs font-semibold tracking-wider text-white uppercase transition-transform hover:scale-105 sm:px-8 sm:py-3.5 sm:text-sm sm:normal-case sm:tracking-wide ${className}`}
+      className={`inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-xl ${className}`}
       style={{
         backgroundColor: institute.accent,
-        boxShadow: `0 8px 24px ${institute.accent}33`,
+        boxShadow: `0 8px 28px ${institute.accent}44`,
       }}
     >
       {children}
