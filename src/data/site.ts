@@ -138,40 +138,28 @@ export const employees: Employee[] = [
 
 export const services: Service[] = [
   {
-    title: "Manucure & semi-permanent",
-    description: "Vernis classique ou gel longue tenue.",
-    image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Pédicure",
-    description: "Soin complet des pieds.",
-    image:
-      "https://images.unsplash.com/photo-1519415510236-718bdcd38c08?w=600&h=400&fit=crop",
-  },
-  {
     title: "Extensions & Nail Art",
     description: "Créations sur mesure.",
     image:
-      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&h=400&fit=crop&q=80",
   },
   {
     title: "Soin du visage",
     description: "Adapté à chaque type de peau.",
     image:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d880?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop&q=80",
   },
   {
     title: "Épilation",
     description: "Douce et précise.",
     image:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=400&fit=crop&q=80",
   },
   {
     title: "Maquillage",
     description: "Pour toutes vos occasions.",
     image:
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&q=80",
   },
 ];
 

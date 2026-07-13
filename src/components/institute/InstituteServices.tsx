@@ -36,7 +36,7 @@ export default function InstituteServices({ institute }: InstituteServicesProps)
 
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible"
+          className="flex gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4"
           style={{ scrollbarWidth: "none" }}
         >
           {services.map((service) => (
@@ -44,7 +44,7 @@ export default function InstituteServices({ institute }: InstituteServicesProps)
               key={service.title}
               className="group w-72 shrink-0 overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-500 hover:shadow-lg md:w-auto"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-52 overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.title}
