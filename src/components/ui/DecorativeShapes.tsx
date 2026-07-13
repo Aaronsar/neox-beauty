@@ -23,10 +23,6 @@ export default function DecorativeShapes({
         className="animate-spin-slow absolute top-20 right-1/4 h-24 w-24 rounded-full border border-dashed opacity-20"
         style={{ borderColor: accent }}
       />
-      <div
-        className="absolute bottom-32 left-12 h-16 w-16 rounded-2xl opacity-15"
-        style={{ backgroundColor: accent }}
-      />
     </div>
   );
 }

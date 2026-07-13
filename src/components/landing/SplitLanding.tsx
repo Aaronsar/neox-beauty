@@ -10,8 +10,8 @@ import { institutes } from "@/data/site";
 type Side = "levallois" | "saint-brice" | null;
 
 const sides = [
-  { id: "levallois" as const, institute: institutes.levallois, num: "01" },
-  { id: "saint-brice" as const, institute: institutes["saint-brice"], num: "02" },
+  { id: "levallois" as const, institute: institutes.levallois },
+  { id: "saint-brice" as const, institute: institutes["saint-brice"] },
 ];
 
 export default function SplitLanding() {
@@ -35,7 +35,7 @@ export default function SplitLanding() {
         </div>
       </div>
 
-      {sides.map(({ id, institute, num }, index) => {
+      {sides.map(({ id, institute }, index) => {
         const isHovered = hovered === id;
         const isOther = hovered !== null && hovered !== id;
 
@@ -79,13 +79,6 @@ export default function SplitLanding() {
                   }}
                 />
 
-                {/* Numéro graphique */}
-                <div
-                  className="absolute top-4 left-4 flex h-12 w-12 items-center justify-center rounded-2xl text-sm font-bold text-white backdrop-blur-sm transition-transform duration-500 group-hover:scale-110"
-                  style={{ backgroundColor: `${institute.accent}cc` }}
-                >
-                  {num}
-                </div>
               </div>
 
               {/* Contenu */}
